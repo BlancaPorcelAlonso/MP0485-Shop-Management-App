@@ -1,9 +1,11 @@
 package model;
 
+import model.Amount;
+
 public class Product {
 	private int id;
 	private String name;
-	private double publicPrice;
+	private Amount publicPrice;
 	private double wholesalerPrice;
 	private boolean available;
 	private int stock;
@@ -16,6 +18,7 @@ public class Product {
 		this.id = totalProducts + 1;
 		this.name = name;
 		this.wholesalerPrice = wholesalerPrice;
+                this.publicPrice = new Amount(wholesalerPrice * 2); // añadimos el precio de eventa al inicializar 
 		this.available = available;
 		this.stock = stock;
 		totalProducts++;
@@ -37,12 +40,12 @@ public class Product {
 		this.name = name;
 	}
 
-	public double getPublicPrice() {
+	public Amount getPublicPrice() {
 		return publicPrice;
 	}
 
 	public void setPublicPrice(double publicPrice) {
-		this.publicPrice = publicPrice;
+		this.publicPrice.setQuantity(publicPrice);
 	}
 
 	public double getWholesalerPrice() {
@@ -79,6 +82,12 @@ public class Product {
 
 	public void expire() {
 		EXPIRATION_RATE = 0.2;
-		this.publicPrice = this.getPublicPrice() * EXPIRATION_RATE;
+		this.setPublicPrice(EXPIRATION_RATE);
 	}
+
+    @Override
+    public String toString() {
+        return "Product{" + "id=" + id + ", name=" + name + ", publicPrice=" + publicPrice + ", wholesalerPrice=" + wholesalerPrice + ", available=" + available + ", stock=" + stock + '}';
+    }
+        
 }
