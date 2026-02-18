@@ -38,7 +38,7 @@ public class Cliente extends Persona implements Payable {
     }
     
     @Override
-    public  boolean pay(Amount amount){
+    public boolean pay(Amount amount){
         balance.setQuantity(balance.getQuantity() - amount.getQuantity());
      if(balance.getQuantity() >= 0)
          return true; 
