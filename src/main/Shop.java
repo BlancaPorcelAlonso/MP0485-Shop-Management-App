@@ -48,6 +48,7 @@ public class Shop {
             System.out.println("6) Venta");
             System.out.println("7) Ver ventas");
             System.out.println("8) Ver beneficio total");
+            System.out.println("9) Eliminar producto");
             System.out.println("10) Salir programa");
             System.out.print("Seleccione una opcion: ");
             opcion = scanner.nextInt();
@@ -86,6 +87,7 @@ public class Shop {
                     break;
                 case 9:
                     shop.deleteProduct();
+                    break;
                 case 10:
                     exit = true;
                     break;
@@ -376,6 +378,7 @@ public class Shop {
 
         if (product != null) {
             inventory.remove(product);
+             System.out.print("Producto eliminado correctamente!");
         }
     }
 
